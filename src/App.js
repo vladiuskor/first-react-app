@@ -1,25 +1,82 @@
-import logo from './logo.svg';
-import './App.css';
+import Style from './App.module.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function formatUserName (firstName, lastName) {
+     return `Welcome to website, ${firstName} ${lastName}`
 }
 
-export default App;
+const Mainheader = () => {
+   const text = 'This test text for homework page';
+   return (
+       <h1 style={{
+           textAlign: 'center',
+           fontSize: '40px',
+           textTransform: 'uppercase'
+       }}>{text}</h1>
+   );
+}
+
+const Subheader = () => {
+    const text = 'Hello, New Stranger!';
+    return(
+        <h2>{formatUserName('Sara', 'Connor')}</h2>
+    )
+}
+
+const SubSubHeader = () => {
+    return (
+        <h3>{formatUserName('John', 'Doe')}</h3>
+    )
+}
+
+const Paragraph = () => {
+    const text = 'Here we have the list:';
+    return (
+        <p>{text}</p>
+    )
+}
+
+const UnorderedList = () => {
+
+    const dataForList = {
+        firstItemText: 'Just text here',
+        secondItemSpan: 'Here we have text and link!',
+        secondItemLinkHref: 'https://uk.reactjs.org/docs',
+        secondItemLinkText: 'It is link to our docs',
+        thirdItemSpan: 'And the picture!!!',
+        thirdItemImgSrc: 'https://www.rspb.org.uk/globalassets/images/birds-and-wildlife/non-bird-species-illustrations/fox_1200x675.jpg'
+    }
+
+    return(
+        <ul>
+            <li tabIndex="_1">
+                {dataForList.firstItemText}
+            </li>
+            <li>
+                <span>{dataForList.secondItemSpan}</span>
+                <a href={dataForList.secondItemLinkHref} target="_blank">{dataForList.secondItemLinkText}</a>
+            </li>
+            <li>
+                <span>{dataForList.thirdItemSpan}</span>
+                <img src={dataForList.thirdItemImgSrc} alt="Fox" width="300"/>
+            </li>
+        </ul>
+    )
+}
+
+
+const Homepage = () => {
+    return (
+        <div className={Style.container}>
+            <Mainheader />
+            <br/>
+            <Subheader />
+            <br/>
+            <SubSubHeader />
+            <br/>
+            <Paragraph />
+            <UnorderedList />
+        </div>
+    )
+}
+
+export default Homepage;
